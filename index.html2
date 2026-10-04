@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>IANNOH — Innovation</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+    background: #fff;
+    color: #111;
+    overflow-x: hidden;
+}
+
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 56px;
+    background: rgba(255,255,255,.82);
+    backdrop-filter: blur(20px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 7%;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(0,0,0,.06);
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: -1px;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 32px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #222;
+    font-size: 14px;
+}
+
+.nav-btn {
+    background: #111;
+    color: white;
+    border: 0;
+    border-radius: 22px;
+    padding: 9px 17px;
+    cursor: pointer;
+}
+
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 100px 20px 70px;
+    background:
+        radial-gradient(circle at 50% 30%, #dfffe9, transparent 35%),
+        linear-gradient(180deg,#fff,#f5f5f7);
+}
+
+.hero-content {
+    max-width: 900px;
+}
+
+.badge {
+    display: inline-block;
+    background: #111;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 30px;
+    font-size: 13px;
+    margin-bottom: 25px;
+}
+
+.hero h1 {
+    font-size: clamp(55px, 12vw, 125px);
+    line-height: .88;
+    letter-spacing: -7px;
+    margin-bottom: 30px;
+}
+
+.hero h1 span {
+    background: linear-gradient(90deg,#111,#555);
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+.hero p {
+    font-size: clamp(18px,3vw,25px);
+    color: #666;
+    max-width: 650px;
+    margin: auto;
+    line-height: 1.5;
+}
+
+.hero-buttons {
+    margin-top: 35px;
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.primary {
+    background: #111;
+    color: white;
+    padding: 15px 28px;
+    border-radius: 30px;
+    text-decoration: none;
+}
+
+.secondary {
+    border: 1px solid #ccc;
+    color: #111;
+    padding: 15px 28px;
+    border-radius: 30px;
+    text-decoration: none;
+}
+
+.section {
+    padding: 120px 7%;
+}
+
+.section-title {
+    max-width: 900px;
+    margin-bottom: 60px;
+}
+
+.section-title small {
+    color: #777;
+    font-size: 15px;
+}
+
+.section-title h2 {
+    font-size: clamp(45px,7vw,85px);
+    line-height: .95;
+    letter-spacing: -4px;
+    margin-top: 15px;
+}
+
+.dark {
+    background: #050505;
+    color: white;
+}
+
+.dark .section-title small {
+    color: #999;
+}
+
+.product {
+    min-height: 650px;
+    border-radius: 35px;
+    padding: 60px;
+    display: flex;
+    align-items: flex-end;
+    position: relative;
+    overflow: hidden;
+    background:
+        radial-gradient(circle at 70% 35%,#777,transparent 15%),
+        linear-gradient(135deg,#111,#333);
+    margin-bottom: 25px;
+}
+
+.product::before {
+    content: "";
+    position: absolute;
+    width: 380px;
+    height: 380px;
+    border-radius: 50%;
+    background: linear-gradient(145deg,#eee,#444);
+    right: 12%;
+    top: 15%;
+    box-shadow: 0 30px 100px rgba(255,255,255,.15);
+}
+
+.product-content {
+    position: relative;
+    z-index: 2;
+    max-width: 520px;
+}
+
+.product h3 {
+    font-size: clamp(45px,6vw,75px);
+    letter-spacing: -3px;
+    margin-bottom: 18px;
+}
+
+.product p {
+    color: #bbb;
+    font-size: 19px;
+    line-height: 1.5;
+}
+
+.product a {
+    display: inline-block;
+    margin-top: 25px;
+    background: white;
+    color: black;
+    padding: 13px 22px;
+    border-radius: 25px;
+    text-decoration: none;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 20px;
+}
+
+.card {
+    min-height: 430px;
+    border-radius: 30px;
+    padding: 35px;
+    background: #f5f5f7;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+}
+
+.card:nth-child(2) {
+    background: #111;
+    color: white;
+}
+
+.card:nth-child(3) {
+    background: #e9f9ef;
+}
+
+.card h3 {
+    font-size: 42px;
+    letter-spacing: -2px;
+}
+
+.card p {
+    color: #777;
+    line-height: 1.5;
+    font-size: 16px;
+}
+
+.card:nth-child(2) p {
+    color: #aaa;
+}
+
+.circle {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    background: linear-gradient(145deg,#fff,#aaa);
+    margin: auto;
+    box-shadow: 0 25px 70px rgba(0,0,0,.18);
+}
+
+.card:nth-child(2) .circle {
+    background: linear-gradient(145deg,#444,#050505);
+}
+
+.card:nth-child(3) .circle {
+    background: linear-gradient(145deg,#caffdc,#42b96b);
+}
+
+.feature {
+    text-align: center;
+    padding: 150px 20px;
+    background: #f5f5f7;
+}
+
+.feature h2 {
+    font-size: clamp(45px,8vw,95px);
+    letter-spacing: -5px;
+    line-height: .95;
+}
+
+.feature p {
+    max-width: 650px;
+    margin: 25px auto;
+    color: #666;
+    font-size: 20px;
+    line-height: 1.5;
+}
+
+.cta {
+    text-align: center;
+    padding: 130px 20px;
+    background: #111;
+    color: white;
+}
+
+.cta h2 {
+    font-size: clamp(45px,8vw,90px);
+    letter-spacing: -5px;
+}
+
+.cta p {
+    color: #aaa;
+    margin: 20px auto 35px;
+    font-size: 19px;
+}
+
+footer {
+    background: #050505;
+    color: #888;
+    padding: 50px 7%;
+}
+
+.footer-top {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    padding-bottom: 40px;
+}
+
+.footer-logo {
+    color: white;
+    font-size: 25px;
+    font-weight: 800;
+}
+
+footer a {
+    color: #888;
+    text-decoration: none;
+}
+
+footer small {
+    border-top: 1px solid #222;
+    display: block;
+    padding-top: 25px;
+}
+
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: 1s ease;
+}
+
+.reveal.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@media(max-width:750px) {
+
+    nav {
+        padding: 0 20px;
+    }
+
+    nav ul {
+        display: none;
+    }
+
+    .hero h1 {
+        letter-spacing: -4px;
+    }
+
+    .section {
+        padding: 80px 20px;
+    }
+
+    .product {
+        min-height: 600px;
+        padding: 30px;
+        border-radius: 25px;
+    }
+
+    .product::before {
+        width: 240px;
+        height: 240px;
+        right: -20px;
+        top: 15%;
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+    }
+
+    .card {
+        min-height: 400px;
+    }
+
+    .footer-top {
+        flex-direction: column;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+    <div class="logo">IANNOH</div>
+
+    <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#products">Products</a></li>
+        <li><a href="#about">About</a></li>
+    </ul>
+
+    <button class="nav-btn" onclick="scrollToSection('contact')">
+        Contact
+    </button>
+</nav>
+
+<section class="hero" id="home">
+    <div class="hero-content reveal">
+
+        <div class="badge">IANNOH — NEW ERA</div>
+
+        <h1>
+            Think<br>
+            <span>different.</span>
+        </h1>
+
+        <p>
+            Technology designed to feel simple,
+            powerful and unforgettable.
+        </p>
+
+        <div class="hero-buttons">
+            <a class="primary" href="#products">Explore</a>
+            <a class="secondary" href="#about">Learn more</a>
+        </div>
+
+    </div>
+</section>
+
+<section class="section dark" id="products">
+
+    <div class="section-title reveal">
+        <small>THE FUTURE</small>
+        <h2>
+            Designed for<br>
+            what's next.
+        </h2>
+    </div>
+
+    <div class="product reveal">
+
+        <div class="product-content">
+            <h3>IANNOH One</h3>
+
+            <p>
+                A new generation of technology.
+                Powerful performance wrapped inside
+                an elegant experience.
+            </p>
+
+            <a href="#">Discover</a>
+        </div>
+
+    </div>
+
+</section>
+
+<section class="section">
+
+    <div class="section-title reveal">
+        <small>EXPLORE THE COLLECTION</small>
+        <h2>More than<br>just technology.</h2>
+    </div>
+
+    <div class="cards">
+
+        <div class="card reveal">
+            <h3>Vision</h3>
+
+            <div class="circle"></div>
+
+            <p>
+                Imagine what's possible when
+                technology disappears into the experience.
+            </p>
+        </div>
+
+        <div class="card reveal">
+            <h3>Power</h3>
+
+            <div class="circle"></div>
+
+            <p>
+                Performance built for creators,
+                developers and people who want more.
+            </p>
+        </div>
+
+        <div class="card reveal">
+            <h3>Air</h3>
+
+            <div class="circle"></div>
+
+            <p>
+                Beautifully simple. Remarkably light.
+                Designed to move with you.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+<section class="feature" id="about">
+
+    <div class="reveal">
+
+        <h2>
+            Simplicity<br>
+            is powerful.
+        </h2>
+
+        <p>
+            IANNOH is built around one idea:
+            technology should make life easier,
+            not more complicated.
+        </p>
+
+        <a class="primary" href="#contact">
+            Discover IANNOH
+        </a>
+
+    </div>
+
+</section>
+
+<section class="cta" id="contact">
+
+    <div class="reveal">
+
+        <h2>Ready for more?</h2>
+
+        <p>
+            Welcome to the next generation of IANNOH.
+        </p>
+
+        <a class="secondary" href="mailto:hello@iannoh.com">
+            Contact us
+        </a>
+
+    </div>
+
+</section>
+
+<footer>
+
+    <div class="footer-top">
+
+        <div>
+            <div class="footer-logo">IANNOH</div>
+            <p style="margin-top:10px;">
+                Innovation for everyone.
+            </p>
+        </div>
+
+        <div>
+            <a href="#home">Home</a><br><br>
+            <a href="#products">Products</a><br><br>
+            <a href="#about">About</a>
+        </div>
+
+    </div>
+
+    <small>
+        © 2026 IANNOH. All rights reserved.
+    </small>
+
+</footer>
+
+<script>
+
+function scrollToSection(id) {
+    document.getElementById(id).scrollIntoView({
+        behavior: "smooth"
+    });
+}
+
+const elements = document.querySelectorAll(".reveal");
+
+const observer = new IntersectionObserver((entries) => {
+
+    entries.forEach(entry => {
+
+        if (entry.isIntersecting) {
+            entry.target.classList.add("show");
+        }
+
+    });
+
+}, {
+    threshold: 0.15
+});
+
+elements.forEach(element => {
+    observer.observe(element);
+});
+
+</script>
+
+</body>
+</html>
